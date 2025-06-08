@@ -1,5 +1,5 @@
 name: custom_preload_videos
-description: "A new Flutter plugin project."
+description: "A plugin to preload videos in a page view"
 version: 0.0.1
 homepage:
 
