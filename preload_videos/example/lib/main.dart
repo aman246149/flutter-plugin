@@ -272,10 +272,7 @@ class _DefaultPlayerExampleState extends State<DefaultPlayerExample> {
                     'Window: ${_preloadVideos!.getStart()} - ${_preloadVideos!.getStart() + _preloadVideos!.getActiveControllers().length - 1}',
                     style: const TextStyle(color: Colors.white, fontSize: 12),
                   ),
-                  Text(
-                    'Playing: ${_preloadVideos!.getCurrentPlayingIndex()}',
-                    style: const TextStyle(color: Colors.white, fontSize: 12),
-                  ),
+
                   Text(
                     'Threshold: ${_preloadVideos!.getPaginationThreshold()}',
                     style: const TextStyle(color: Colors.white, fontSize: 12),

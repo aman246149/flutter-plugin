@@ -17,7 +17,7 @@ class PreloadVideos {
   late int _end;
   int _prevIndex = 0;
   int _start = 0;
-  int _currentPlayingIndex = -1; // Track currently playing video
+  int _activeIndex = -1; // Track currently playing video
   final bool _autoplayFirstVideo;
   bool _firstVideoPlayed = false;
 
@@ -125,6 +125,9 @@ class PreloadVideos {
           _autoPlayCurrent(0);
           _firstVideoPlayed = true;
         });
+      }
+      if (index == _activeIndex) {
+        _autoPlayCurrent(index);
       }
       if (onControllerInitialized != null) {
         onControllerInitialized!(controller);
@@ -283,11 +286,12 @@ class PreloadVideos {
 
   /// Auto-play the video at the current index with retry mechanism
   void _autoPlayCurrent(int currentIndex) {
+    _activeIndex = currentIndex;
     final controller = getControllerAtIndex(currentIndex);
     if (controller != null) {
       if (controller.isInitialized && !controller.isPlaying) {
         controller.play();
-        _currentPlayingIndex = currentIndex;
+        _activeIndex = currentIndex;
         _log(
           'Auto-playing video at index: $currentIndex',
           emoji: '▶️',
@@ -304,9 +308,6 @@ class PreloadVideos {
           emoji: '⏳',
           color: 'yellow',
         );
-        Future.delayed(Duration(milliseconds: 100), () {
-          _autoPlayCurrent(currentIndex);
-        });
       }
     }
   }
@@ -381,7 +382,7 @@ class PreloadVideos {
   int getStart() => _start;
 
   /// Get current playing index
-  int getCurrentPlayingIndex() => _currentPlayingIndex;
+  int getActiveIndex() => _activeIndex;
 
   /// Force autoplay for a specific index (useful for initialization)
   void forceAutoPlay(int index) {
