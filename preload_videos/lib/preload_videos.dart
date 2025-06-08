@@ -321,10 +321,20 @@ class PreloadVideos {
     // Pause all videos except the current one
     _pauseAllExcept(index);
 
-    if (index > _prevIndex) {
-      await _onScrollForward(index, () {});
-    } else if (index < _prevIndex) {
-      await _onScrollBackward(index);
+    if (index == _prevIndex) return;
+
+    final int pivot = _start + _preloadBackward;
+
+    if (index > pivot) {
+      // Adjust window by scrolling forward
+      while (index > _start + _preloadBackward && _end < _videoUrls.length) {
+        await _onScrollForward(index, () {});
+      }
+    } else if (index < pivot) {
+      // Adjust window by scrolling backward
+      while (index < _start + _preloadBackward && _start > 0) {
+        await _onScrollBackward(index);
+      }
     }
 
     _prevIndex = index;
