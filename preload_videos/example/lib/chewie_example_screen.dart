@@ -1,6 +1,6 @@
 import 'package:chewie/chewie.dart';
+import 'package:custom_preload_videos/preload_videos.dart' show PreloadVideos;
 import 'package:flutter/material.dart';
-import 'package:preload_videos/preload_videos.dart';
 
 import 'custom_implementaion/chewie_controller.dart';
 

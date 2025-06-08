@@ -1,6 +1,8 @@
+import 'package:custom_preload_videos/interface/controller_interface.dart' show CustomVideoController;
 import 'package:flutter/foundation.dart';
-import 'package:preload_videos/interface/controller_interface.dart';
-import 'package:preload_videos/my_custom_controller_impl/my_video_controller.dart';
+
+import 'my_custom_controller_impl/my_video_controller.dart';
+
 
 /// Factory function type for creating custom video controllers
 typedef CustomVideoControllerFactory =

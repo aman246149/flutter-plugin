@@ -1,6 +1,6 @@
-# preload_videos_example
+# custom_preload_videos_example
 
-Demonstrates how to use the preload_videos plugin.
+Demonstrates how to use the custom_preload_videos plugin.
 
 ## Getting Started
 

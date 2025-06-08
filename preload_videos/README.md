@@ -1,4 +1,4 @@
-# preload_videos
+# custom_preload_videos
 
 A new Flutter plugin project.
 

@@ -5,41 +5,41 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "preload_videos",
-            "cwd": "preload_videos",
+            "name": "custom_preload_videos",
+            "cwd": "custom_preload_videos",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "preload_videos (profile mode)",
-            "cwd": "preload_videos",
+            "name": "custom_preload_videos (profile mode)",
+            "cwd": "custom_preload_videos",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "preload_videos (release mode)",
-            "cwd": "preload_videos",
+            "name": "custom_preload_videos (release mode)",
+            "cwd": "custom_preload_videos",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
         },
         {
             "name": "example",
-            "cwd": "preload_videos\\example",
+            "cwd": "custom_preload_videos\\example",
             "request": "launch",
             "type": "dart"
         },
         {
             "name": "example (profile mode)",
-            "cwd": "preload_videos\\example",
+            "cwd": "custom_preload_videos\\example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
             "name": "example (release mode)",
-            "cwd": "preload_videos\\example",
+            "cwd": "custom_preload_videos\\example",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

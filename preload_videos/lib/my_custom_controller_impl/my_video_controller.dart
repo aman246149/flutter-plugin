@@ -1,4 +1,4 @@
-import 'package:preload_videos/interface/controller_interface.dart';
+import 'package:custom_preload_videos/interface/controller_interface.dart' show CustomVideoController;
 import 'package:video_player/video_player.dart';
 
 /// Default implementation using VideoPlayerController

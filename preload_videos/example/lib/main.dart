@@ -1,8 +1,8 @@
+import 'package:custom_preload_videos/preload_videos.dart' show PreloadVideos;
 import 'package:flutter/material.dart';
-import 'package:preload_videos/interface/controller_interface.dart';
-import 'package:preload_videos/my_custom_controller_impl/my_video_controller.dart';
+import 'package:custom_preload_videos/interface/controller_interface.dart';
+import 'package:custom_preload_videos/my_custom_controller_impl/my_video_controller.dart';
 import 'package:video_player/video_player.dart';
-import 'package:preload_videos/preload_videos.dart';
 
 import 'chewie_example_screen.dart';
 

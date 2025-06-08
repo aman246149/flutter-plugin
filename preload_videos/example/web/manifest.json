@@ -1,6 +1,6 @@
 {
-    "name": "preload_videos_example",
-    "short_name": "preload_videos_example",
+    "name": "custom_preload_videos_example",
+    "short_name": "custom_preload_videos_example",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:preload_videos/interface/controller_interface.dart';
+import 'package:custom_preload_videos/interface/controller_interface.dart';
 import 'package:video_player/video_player.dart';
 import 'package:chewie/chewie.dart';
 
