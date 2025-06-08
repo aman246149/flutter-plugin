@@ -1,12 +1,13 @@
-import 'package:custom_preload_videos/interface/controller_interface.dart' show CustomVideoController;
+import 'package:custom_preload_videos/interface/controller_interface.dart'
+    show CustomVideoController;
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 import 'my_custom_controller_impl/my_video_controller.dart';
 
-
 /// Factory function type for creating custom video controllers
-typedef CustomVideoControllerFactory =
-    CustomVideoController Function(String url);
+typedef CustomVideoControllerFactory = CustomVideoController Function(
+    String url);
 
 class PreloadVideos {
   late int _preloadBackward;
@@ -31,7 +32,7 @@ class PreloadVideos {
 
   /// Callback after controller is initialized
   final void Function(CustomVideoController controller)?
-  onControllerInitialized;
+      onControllerInitialized;
 
   /// Callback when video play state changes
   final void Function()? onPlayStateChanged;
@@ -112,29 +113,29 @@ class PreloadVideos {
 
   CustomVideoController _initController(String url, int index) {
     final controller = _controllerFactory(url);
-    controller
-        .initialize()
-        .then((_) {
-          _log(
-            'Controller initialized successfully for: $url',
-            emoji: '✅',
-            color: 'green',
-          );
-          if (_autoplayFirstVideo && index == 0 && !_firstVideoPlayed) {
-            _autoPlayCurrent(0);
-            _firstVideoPlayed = true;
-          }
-          if (onControllerInitialized != null) {
-            onControllerInitialized!(controller);
-          }
-        })
-        .catchError((error) {
-          _log(
-            'Failed to initialize controller for: $url - Error: $error',
-            emoji: '❌',
-            color: 'red',
-          );
+    controller.initialize().then((_) {
+      _log(
+        'Controller initialized successfully for: $url',
+        emoji: '✅',
+        color: 'green',
+      );
+      if (_autoplayFirstVideo && index == 0 && !_firstVideoPlayed) {
+        //add post frame callback to play the video
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          _autoPlayCurrent(0);
+          _firstVideoPlayed = true;
         });
+      }
+      if (onControllerInitialized != null) {
+        onControllerInitialized!(controller);
+      }
+    }).catchError((error) {
+      _log(
+        'Failed to initialize controller for: $url - Error: $error',
+        emoji: '❌',
+        color: 'red',
+      );
+    });
     return controller;
   }
 
