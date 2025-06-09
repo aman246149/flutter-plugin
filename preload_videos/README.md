@@ -1,6 +1,5 @@
 # custom_preload_videos
 
-[![pub package](https://img.shields.io/pub/v/preload_videos.svg)](https://pub.dev/packages/preload_videos)
 
 A powerful and flexible Flutter video preloading package that allows you to create seamless video experiences, similar to platforms like TikTok or Instagram Reels. It preloads a window of videos to ensure smooth playback as the user scrolls.
 
