@@ -51,9 +51,9 @@ class _VideoScreenState extends State<VideoScreen> {
     super.initState();
     _preloadVideos = PreloadVideos(
       videoUrls: videoUrls,
-      preloadForward: 3,
-      preloadBackward: 2,
-      windowSize: 6,
+      preloadForward: 5,
+      preloadBackward: 5,
+      windowSize: 11,
       autoplayFirstVideo: true,
       onPaginationNeeded: () async {
         // Fetch more video URLs from your API

@@ -1,6 +1,6 @@
 name: custom_preload_videos
-description: "A plugin to preload videos in a page view"
-version: 0.0.4
+description: "A Flutter plugin designed to preload and cache videos for smooth playback within a PageView. It helps to eliminate buffering and provides a seamless video viewing experience by managing video assets proactively."
+version: 0.0.9
 homepage: https://github.com/aman246149/flutter-plugin/tree/master/preload_videos
 repository: https://github.com/aman246149/flutter-plugin/tree/master/preload_videos
 

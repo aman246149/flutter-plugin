@@ -99,10 +99,10 @@ class _DefaultPlayerExampleState extends State<DefaultPlayerExample> {
   void _initializePreloadVideos() {
     _preloadVideos = PreloadVideos(
       videoUrls: videoUrls,
-      preloadBackward: 2,
-      preloadForward: 3,
-      windowSize: 6,
-      paginationThreshold: 3,
+      preloadBackward: 5,
+      preloadForward: 5,
+      windowSize: 11,
+      paginationThreshold: 5,
       autoplayFirstVideo: true,
       onControllerInitialized: (CustomVideoController controller) {
         if (mounted) {
@@ -120,8 +120,12 @@ class _DefaultPlayerExampleState extends State<DefaultPlayerExample> {
 
         // Return more video URLs (in real app, fetch from your API)
         return [
-          "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-          "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+          "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+          "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4",
+          "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+          "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4",
+          "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+          "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4",
         ];
       },
     );

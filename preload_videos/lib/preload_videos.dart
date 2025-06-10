@@ -22,6 +22,7 @@ class PreloadVideos {
   bool _firstVideoPlayed = false;
 
   List<String> _videoUrls = [];
+  bool _isPaginating = false;
 
   // Pagination constants and configuration
   static const int _DEFAULT_PAGINATION_THRESHOLD = 5;
@@ -52,7 +53,7 @@ class PreloadVideos {
     CustomVideoControllerFactory? controllerFactory,
     bool autoplayFirstVideo = false,
   }) : _autoplayFirstVideo = autoplayFirstVideo {
-    _videoUrls = videoUrls;
+    _videoUrls = List.of(videoUrls);
     _paginationThreshold = paginationThreshold ?? _DEFAULT_PAGINATION_THRESHOLD;
     _controllerFactory =
         controllerFactory ?? ((url) => DefaultVideoController(url));
@@ -154,9 +155,12 @@ class PreloadVideos {
 
   /// Check if pagination is needed and trigger it
   Future<void> _checkAndTriggerPagination(int currentIndex) async {
+    if (_isPaginating) return;
+
     final remainingItems = _videoUrls.length - currentIndex - 1;
 
     if (remainingItems <= _paginationThreshold && onPaginationNeeded != null) {
+      _isPaginating = true;
       _log(
         'Pagination threshold reached! Remaining items: $remainingItems',
         emoji: '📄',
@@ -175,17 +179,16 @@ class PreloadVideos {
         }
       } catch (e) {
         _log('Pagination failed: $e', emoji: '❌', color: 'red');
+      } finally {
+        _isPaginating = false;
       }
     }
   }
 
   Future<void> _onScrollForward(
     int index,
-    Function() paginationCallback,
   ) async {
-    // Check for pagination before processing scroll
-    await _checkAndTriggerPagination(index);
-
+    // Check for pagination before processing scroll is now handled in scroll()
     if (_end >= _videoUrls.length) {
       _log(
         "Cannot scroll forward - reached end of videos",
@@ -327,9 +330,11 @@ class PreloadVideos {
     final int pivot = _start + _preloadBackward;
 
     if (index > pivot) {
+      // Check for pagination before scrolling forward
+      await _checkAndTriggerPagination(index);
       // Adjust window by scrolling forward
       while (index > _start + _preloadBackward && _end < _videoUrls.length) {
-        await _onScrollForward(index, () {});
+        await _onScrollForward(index);
       }
     } else if (index < pivot) {
       // Adjust window by scrolling backward
