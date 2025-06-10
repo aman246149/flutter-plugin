@@ -4,64 +4,23 @@ import 'package:custom_preload_videos/interface/controller_interface.dart';
 import 'package:custom_preload_videos/my_custom_controller_impl/my_video_controller.dart';
 import 'package:video_player/video_player.dart';
 
-import 'chewie_example_screen.dart';
 
 void main() {
-  runApp(constApp());
+  runApp(MyApp());
 }
 
-class constApp extends StatelessWidget {
-  const constApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Video Preloader Demo',
-      home: ExampleSelectionScreen(),
+      home: DefaultPlayerExample(),
     );
   }
 }
 
-class ExampleSelectionScreen extends StatelessWidget {
-  const ExampleSelectionScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Preload Video Examples')),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const DefaultPlayerExample(),
-                  ),
-                );
-              },
-              child: const Text('Default Player Example'),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ChewieExampleScreen(),
-                  ),
-                );
-              },
-              child: const Text('Chewie Player Example'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
 
 class DefaultPlayerExample extends StatefulWidget {
   const DefaultPlayerExample({super.key});
